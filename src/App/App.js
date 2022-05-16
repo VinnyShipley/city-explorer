@@ -42,9 +42,6 @@ class App extends React.Component {
           <input type="text" id="cityName" onChange={this.cityChange}></input>
           <button type="submit">Explore!</button>
         </form>
-        <h2>City: {this.state.city}</h2>
-        <h2>Latitude: {this.state.lat}</h2>
-        <h2>Longitude: {this.state.lon}</h2>
         <table className="table">
           <thead>
             <tr>
