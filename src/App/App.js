@@ -10,7 +10,6 @@ class App extends React.Component {
       city: '',
       lat: '',
       lon: '',
-      map: '',
       showLoc: false
     }
   }
@@ -66,7 +65,8 @@ class App extends React.Component {
           </tbody>
         </table>
         <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lon},${this.state.lat}&zoom=12`} alt="map" />
-  </>}
+  </>
+  }
       </>
     );
   };
