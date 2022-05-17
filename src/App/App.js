@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import React from 'react';
 
@@ -18,7 +19,6 @@ class App extends React.Component {
     e.preventDefault();
     let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
     let cityInfo = await axios.get(url);
-    console.log(cityInfo.data[0]);
     this.setState({
       lat: cityInfo.data[0].lat,
       lon: cityInfo.data[0].lon,
@@ -36,6 +36,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log()
     return (
       <>
         <h1>City Explorer</h1>
@@ -64,7 +65,8 @@ class App extends React.Component {
             </tr>
           </tbody>
         </table>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lon},${this.state.lat}&zoom=12`} alt="map" />
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt="map" />
+  
   </>
   }
       </>
