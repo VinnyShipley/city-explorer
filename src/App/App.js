@@ -9,7 +9,9 @@ class App extends React.Component {
     this.state = {
       city: '',
       lat: '',
-      lon: ''
+      lon: '',
+      map: '',
+      showLoc: false
     }
   }
 
@@ -20,7 +22,8 @@ class App extends React.Component {
     console.log(cityInfo.data[0]);
     this.setState({
       lat: cityInfo.data[0].lat,
-      lon: cityInfo.data[0].lon
+      lon: cityInfo.data[0].lon,
+      showLoc: true
     })
   }
 
@@ -42,6 +45,8 @@ class App extends React.Component {
           <input type="text" id="cityName" onChange={this.cityChange}></input>
           <button type="submit">Explore!</button>
         </form>
+        {this.state.showLoc &&
+        <>
         <table className="table">
           <thead>
             <tr>
@@ -60,6 +65,8 @@ class App extends React.Component {
             </tr>
           </tbody>
         </table>
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lon},${this.state.lat}&zoom=12`} alt="map" />
+  </>}
       </>
     );
   };
