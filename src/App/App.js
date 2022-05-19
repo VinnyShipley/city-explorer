@@ -21,7 +21,8 @@ class App extends React.Component {
     try {
       let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
 
-      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
+      //let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
+      let weatherUrl = `https://ship-city-explorer-api.herokuapp/weather?city_name=${this.state.city}`;
 
       let searchedCityWeather = await axios.get(weatherUrl);
 
@@ -79,10 +80,10 @@ class App extends React.Component {
               </tbody>
             </table>
             <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt="map" />
-<Weather
-weather = {this.state.weatherData}>
+            <Weather
+              weather={this.state.weatherData}>
 
-</Weather>
+            </Weather>
 
 
           </>
