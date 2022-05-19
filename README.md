@@ -22,6 +22,10 @@ The user needs to have React installed to run this applciation, as well as their
 
 Denis Rendon and Vinny Shipley created the API wireframe shown here: ![API wireframe](src/img/API-wireframe.png "API wireframe")
 
+Elizabeth Hammes and Vinny Shipley created the API wireframe shown here: ![API wireframe](src/img/Local-server-snip.png "API wireframe")
+
+Yu-Wei Hsieh and Vinny Shipley created teh API wireframe shown here: ![Lab 8 Wireframe](src/img/Lab-08-wireframe.png)
+
 ### Lab 06
 
 Name of feature: Setting up API functionality
