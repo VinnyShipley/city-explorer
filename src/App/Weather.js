@@ -17,16 +17,16 @@ class Weather extends React.Component {
         </thead>
         <tbody>
           <tr>
-            <td>{this.props.weather[0].date}</td>
-            <td>{this.props.weather[0].description}</td>
+            <td>{this.props.weather.description}</td>
+            {/* <td>{this.props.weather.}</td>
           </tr>
           <tr>
-            <td>{this.props.weather[1].date}</td>
+            <td>{this.props.weather.data[1].date}</td>
             <td>{this.props.weather[1].description}</td>
           </tr>
           <tr>
             <td>{this.props.weather[2].date}</td>
-            <td>{this.props.weather[2].description}</td>
+            <td>{this.props.weather[2].description}</td> */}
           </tr>
         </tbody>
       </Table>

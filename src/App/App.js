@@ -20,21 +20,19 @@ class App extends React.Component {
     e.preventDefault();
     try {
       let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API_KEY}&q=${this.state.city}&format=json`;
-
-      //let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
-      let weatherUrl = `https://ship-city-explorer-api.herokuapp/weather?city_name=${this.state.city}`;
-
-      let searchedCityWeather = await axios.get(weatherUrl);
-
-      console.log(searchedCityWeather.data);
-
       let cityInfo = await axios.get(url);
+      
       this.setState({
         lat: cityInfo.data[0].lat,
         lon: cityInfo.data[0].lon,
-        showLoc: true,
-        weatherData: searchedCityWeather.data
+        showLoc: true
       })
+      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
+      let searchedCityWeather = await axios.get(weatherUrl);
+      this.setState({
+        weatherData: searchedCityWeather
+      })
+      console.log(this.state.weatherData)
     }
     catch {
 
