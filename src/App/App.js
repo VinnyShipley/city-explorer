@@ -12,7 +12,8 @@ class App extends React.Component {
       lat: '',
       lon: '',
       showLoc: false,
-      weatherData: ''
+      weatherData: '',
+      hasWeatherData : false
     }
   }
 
@@ -27,12 +28,13 @@ class App extends React.Component {
         lon: cityInfo.data[0].lon,
         showLoc: true
       })
+  
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
       let searchedCityWeather = await axios.get(weatherUrl);
       this.setState({
-        weatherData: searchedCityWeather
+        hasWeatherData : true,
+        weatherData : searchedCityWeather
       })
-      console.log(this.state.weatherData)
     }
     catch {
 
@@ -58,7 +60,7 @@ class App extends React.Component {
           <button type="submit">Explore!</button>
         </form>
         {this.state.showLoc &&
-          <>
+          (<>
             <table className="table">
               <thead>
                 <tr>
@@ -79,12 +81,10 @@ class App extends React.Component {
             </table>
             <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt="map" />
             <Weather
-              weather={this.state.weatherData}>
-
+              hasTheWeatherData = {this.state.hasWeatherData}
+              weather = {this.state.weatherData}>
             </Weather>
-
-
-          </>
+          </>)
         }
       </>
     );
