@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import Weather from './Weather'
+import Weather from './Weather.js';
+import Movie from './Movie.js'
 
 
 class App extends React.Component {
@@ -13,7 +14,9 @@ class App extends React.Component {
       lon: '',
       showLoc: false,
       weatherData: '',
-      hasWeatherData : false
+      hasWeatherData : false,
+      movieData: '',
+      hasMovieData: false
     }
   }
 
@@ -28,16 +31,23 @@ class App extends React.Component {
         lon: cityInfo.data[0].lon,
         showLoc: true
       })
-  
+      let movieUrl = `${process.env.REACT_APP_SERVER}/movies?city_name=${this.state.city}`;
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city}`;
+  
       let searchedCityWeather = await axios.get(weatherUrl);
       this.setState({
         hasWeatherData : true,
         weatherData : searchedCityWeather
       })
+
+      let searchedMovieUrl = await axios.get(movieUrl);
+      this.setState({
+        hasMovieData: true,
+        movieData: searchedMovieUrl.data
+      })
     }
     catch {
-
+      console.log('error');
     }
   }
 
@@ -84,6 +94,10 @@ class App extends React.Component {
               hasTheWeatherData = {this.state.hasWeatherData}
               weather = {this.state.weatherData}>
             </Weather>
+            <Movie
+            hasMovieData = {this.state.hasMovieData}
+            movieData = {this.state.movieData}>
+            </Movie>
           </>)
         }
       </>
