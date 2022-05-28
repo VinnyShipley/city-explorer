@@ -7,7 +7,7 @@ class Movie extends React.Component {
     console.log(this.props.hasMovieData)
     if (passedMovieData === true) {
     return (
-      <p>{this.props.movieData[0].title}</p>
+      <p>{console.log(this.props.hasMovieData)}</p>
     )
   }
     else {
